@@ -14,7 +14,6 @@ class SlopeOnePredictor_explicit():
         """
         You can pre-calculate deviation in here or calculate in predict().
         """
-        # ========================= EDIT HERE ========================
         def get_dev_val(i, j):
             dev_val = 0
             users = 0
@@ -43,7 +42,6 @@ class SlopeOnePredictor_explicit():
                     self.evaled_users_mat[j][i] = users
         
         #return dev, evaled_users_mat
-        # ============================================================
         #pass
 
     def predict(self, user_id, item_ids):
@@ -52,10 +50,9 @@ class SlopeOnePredictor_explicit():
         # user i가 시청한 item들
         rated_items = np.where(~np.isnan(self.train[user_id,:]))[0]
         for one_missing_item in item_ids:
-            # ========================= EDIT HERE ========================
             predicted_rate = np.sum((self.dev[one_missing_item][rated_items] + self.train[user_id][rated_items]) * self.evaled_users_mat[one_missing_item][rated_items]) / np.sum(self.evaled_users_mat[one_missing_item][rated_items])
             predicted_values.append(predicted_rate)
-            # ============================================================
+
         return predicted_values
 
 
