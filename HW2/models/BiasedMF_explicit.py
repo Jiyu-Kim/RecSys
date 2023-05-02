@@ -5,7 +5,7 @@ import torch
 class BiasedMF_explicit_model(torch.nn.Module):
     def __init__(self, num_users, num_items, n_features):
         super().__init__()
-        # ========================= EDIT HERE ========================
+       
         self.user_factors = torch.nn.Embedding(num_users, n_features+2, sparse=False)
         self.item_factors = torch.nn.Embedding(num_items, n_features+2, sparse=False)
 
@@ -14,14 +14,11 @@ class BiasedMF_explicit_model(torch.nn.Module):
 
         torch.nn.init.ones_(self.user_factors.weight[:,-1])
         torch.nn.init.ones_(self.item_factors.weight[:,-2])
-        # ========================= EDIT HERE ========================
 
     def forward(self):
         reconstruction = None
-        # ========================= EDIT HERE ========================
         reconstruction = torch.matmul(self.user_factors.weight, self.item_factors.weight.T)
-        
-        # ========================= EDIT HERE ========================
+
         return reconstruction
 
 
