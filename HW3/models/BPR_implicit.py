@@ -43,7 +43,6 @@ class BPR_implicit():
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=learning_rate, weight_decay=reg_lambda)
 
     def fit(self):
-        # ========================= EDIT HERE ========================
         user_rated_dict = dict()
         user_not_rated_dict = dict()
         for u in range(self.num_users):
@@ -52,11 +51,6 @@ class BPR_implicit():
 
         for epoch in range(self.num_epcohs):
             train_data = []
-            '''
-            Implement making training data
-            e.g.) train_data = [(user_id, pos_item_id, neg_item_id), ...]
-            '''
-            # IMPLEMENT HERE
             
             for user_id in range(self.num_users):
                 for pos_item_id in user_rated_dict[u]:
@@ -76,10 +70,6 @@ class BPR_implicit():
                 item_is = train[:, 1].to(self.device)
                 item_js = train[:, 2].to(self.device)
 
-                '''
-                Implement prediction and loss
-                '''
-                # IMPLEMENT HERE
                 prediction_is = self.model.forward(users, item_is)
                 prediction_js = self.model.forward(users, item_js)
                 loss = -(prediction_is - prediction_js).sigmoid().log().sum()
@@ -101,7 +91,6 @@ class BPR_implicit():
                 prec, recall, ndcg, mrr, mAP = eval_implicit(self, self.train, self.valid, top_k)
                 print("[BPR] epoch %d, loss: %f"%(epoch, epoch_loss/len(train_loader)))
                 print(f"(BPR VALID) prec@{top_k} {prec}, recall@{top_k} {recall}, ndcg@{top_k} {ndcg}, mrr@{top_k} {mrr}, map@{top_k} {mAP}")
-        # ========================= EDIT HERE ========================
 
     def predict(self, user_id, item_ids):
         with torch.no_grad():
