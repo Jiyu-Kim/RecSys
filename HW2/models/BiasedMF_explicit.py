@@ -4,8 +4,7 @@ import torch
 
 class BiasedMF_explicit_model(torch.nn.Module):
     def __init__(self, num_users, num_items, n_features):
-        super().__init__()
-       
+        super().__init__() 
         self.user_factors = torch.nn.Embedding(num_users, n_features+2, sparse=False)
         self.item_factors = torch.nn.Embedding(num_items, n_features+2, sparse=False)
 
