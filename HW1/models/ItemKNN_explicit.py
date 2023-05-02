@@ -23,7 +23,6 @@ class ItemKNN_explicit():
         """
         for item_i in range(0, self.num_items):
             for item_j in range(item_i+1, self.num_items):
-                # ========================= EDIT HERE ========================
                 #pass
                 #a = self.train[:, item_i]
                 #b = self.train[:, item_j]
@@ -42,7 +41,6 @@ class ItemKNN_explicit():
                     continue
 
                 item_item_sim_matrix[item_i, item_j] = dot_a_b / (np.linalg.norm(a) * np.linalg.norm(b))
-                # ============================================================
 
         self.item_item_sim_matrix = (item_item_sim_matrix + item_item_sim_matrix.T)
 
@@ -59,7 +57,6 @@ class ItemKNN_explicit():
             rated_items = np.where(~np.isnan(self.normalized_train[one_missing_user,:]))[0]
             unsorted_sim = self.item_item_sim_matrix[item_id, rated_items]
 
-            # ========================= EDIT HERE ========================
             #pass
             # 유사도 정렬
             sorted_items = np.argsort(unsorted_sim)       
@@ -88,7 +85,6 @@ class ItemKNN_explicit():
                     predicted_rate = np.sum(items_rate*items_sim) / np.sum(items_sim)
                 
                 predicted_values.append(predicted_rate)
-            # ============================================================
 
         return predicted_values
 
