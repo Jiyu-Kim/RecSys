@@ -5,7 +5,6 @@ import torch
 class SVDpp_explicit_model(torch.nn.Module):
     def __init__(self, num_users, num_items, n_features):
         super().__init__()
-        # ========================= EDIT HERE ========================
         self.user_factors = torch.nn.Embedding(num_users, n_features+2, sparse=False)
         self.item_factors = torch.nn.Embedding(num_items, n_features+2, sparse=False)
         self.latent_item_matrix = torch.nn.Embedding(num_items, n_features+2, sparse=False)
@@ -18,16 +17,14 @@ class SVDpp_explicit_model(torch.nn.Module):
         torch.nn.init.ones_(self.item_factors.weight[:,-2])
         torch.nn.init.zeros_(self.latent_item_matrix.weight[:,-1])
         torch.nn.init.zeros_(self.latent_item_matrix.weight[:,-2])
-        # ========================= EDIT HERE ========================
 
     def forward(self, implicit_train_matrix):
         reconstruction = None
-        # ========================= EDIT HERE ========================
         uv = torch.matmul(self.user_factors.weight, self.item_factors.weight.T)
         fy = torch.matmul(implicit_train_matrix, self.latent_item_matrix.weight)
         fyv = torch.matmul(fy, self.item_factors.weight.T)
         reconstruction = uv + fyv
-        # ========================= EDIT HERE ========================
+        
         return reconstruction
 
 
@@ -59,12 +56,10 @@ class SVDpp_explicit():
         implicit_ratings = torch.FloatTensor(self.train).bool().float() 
 
         # TODO: normalize implicit ratings with the eplison
-        # ========================= EDIT HERE ========================
         epsilon = 1e-10
         ju = torch.sum(implicit_ratings, dim=1)
         ju = torch.sqrt(ju).view((-1, 1))
         implicit_ratings = implicit_ratings / (ju + epsilon)
-        # ========================= EDIT HERE ========================
 
         # U와 V를 업데이트 함.
         for epoch in range(self.num_epcohs):
