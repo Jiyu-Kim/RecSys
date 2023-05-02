@@ -7,7 +7,7 @@
 <div>
 
   ## 📌 Introduction
-  This is a collection of assignments and projects that I completed during the <i><strong>Recommendation Systems</strong></i> course I took in the first semester of my fourth year.<br/>
+  This is a collection of assignments and projects that I completed during the <i><strong>Recommendation Systems</strong></i> course I took in the first semester of my fourth year.<br/><br/>
   - HW1
     - Implement User-based collaborative filtering(models/userKNN_explicit.py)
     - Implement Item-based collaborative filtering(models/itemKNN_explicit.py)
