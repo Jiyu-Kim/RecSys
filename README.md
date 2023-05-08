@@ -7,7 +7,9 @@
 <div>
 
   ## 📌 Introduction
-  This is a collection of assignments and projects that I completed during the <i><strong>Recommendation Systems</strong></i> course I took in the first semester of my fourth year.<br/><br/>
+  <!--This is a collection of assignments and projects that I completed during the <i><strong>Recommendation Systems</strong></i> course I took in the first semester of my fourth year.<br/><br/>-->
+  This repository contains projects where I reviewed research papers in the field of recommendation systems, identified state-of-the-art (SOTA) models, and implemented and validated those models mentioned in the papers during the <i><strong>Recommendation Systems</strong></i> course.<br/><br/>
+  
   - HW1
     - Implement User-based collaborative filtering(models/userKNN_explicit.py)
     - Implement Item-based collaborative filtering(models/itemKNN_explicit.py)
